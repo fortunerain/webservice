@@ -1,0 +1,9 @@
+spring:
+  jpa:
+    show-sql: true  #sql 확인용
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect # 기본으로 H2 문법으로 로깅되기 때문에 MySql 쿼리문법을 보기 위함.
+  h2:
+    console:
+      enabled: true
