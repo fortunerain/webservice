@@ -1,5 +1,6 @@
 package com.farm.test.domain.posts;
 
+import com.farm.test.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
