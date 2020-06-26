@@ -1,5 +1,7 @@
 package com.farm.test.config.auth;
 
+import com.farm.test.config.auth.dto.OAuthAttributes;
+import com.farm.test.config.auth.dto.SessionUser;
 import com.farm.test.domain.user.User;
 import com.farm.test.domain.user.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -35,18 +37,17 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
     httpSession.setAttribute("user", new SessionUser(user));
 
-
     return new DefaultOAuth2User(Collections.singleton(
-            new SimpleGrantedAuthority(user.getRoleKey())),
-            authAttributes.getAttributes(),
-            authAttributes.getNameAttributeKey());
-    ));
+      new SimpleGrantedAuthority(user.getRoleKey())),
+      authAttributes.getAttributes(),
+      authAttributes.getNameAttributeKey());
+
   }
 
   private User saveOrUpdate(OAuthAttributes authAttributes) {
     User user = userRepository.findByEmail(authAttributes.getEmail())
-            .map(entity -> entity.update(authAttributes.getName(), authAttributes.getPicture()))
-            .orElse(authAttributes.toEntity());
+      .map(entity -> entity.update(authAttributes.getName(), authAttributes.getPicture()))
+      .orElse(authAttributes.toEntity());
 
     return userRepository.save(user);
   }
