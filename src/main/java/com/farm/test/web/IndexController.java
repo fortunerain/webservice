@@ -1,5 +1,6 @@
 package com.farm.test.web;
 
+import com.farm.test.config.auth.LoginUser;
 import com.farm.test.config.auth.dto.SessionUser;
 import com.farm.test.service.posts.PostsService;
 import com.farm.test.web.dto.PostsResponseDto;
@@ -18,15 +19,17 @@ public class IndexController {
   private final HttpSession httpSession;
 
   @GetMapping("/")
-  public String index(Model model) {
+  public String index(Model model, @LoginUser SessionUser user) {
     model.addAttribute("posts", postsService.findAllDesc());
 
-    SessionUser user = (SessionUser) httpSession.getAttribute("user");
+//    SessionUser user = (SessionUser) httpSession.getAttribute("user");
+
     if (user != null) {
       model.addAttribute("userName", user.getName());
     }
 
     return "index";
+
   }
 
   @GetMapping("/posts/save")

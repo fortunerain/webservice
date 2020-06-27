@@ -24,6 +24,7 @@ public class User {
   @Column
   private String picture;
 
+  //Enum 저장시 기본으로 int가 저장되는데 String으로 저장되도록 함.
   @Enumerated(EnumType.STRING)
   @Column(nullable = false)
   private Role role;
