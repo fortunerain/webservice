@@ -4,3 +4,5 @@
 /src/main/resources/application-oauth.yml
 /src/main/resources/application-oauth-local.yml
 
+build/
+out/
