@@ -1,4 +1,13 @@
 spring:
+  profiles:
+    active: local
+
+---
+
+spring:
+  profiles:
+    include: oauth-local
+    active: local
   jpa:
     show-sql: true  #sql 확인용
     properties:
@@ -7,7 +16,19 @@ spring:
   h2:
     console:
       enabled: true
+  session:
+    store-type: jdbc
+
+---
+spring:
   profiles:
-    include: oauth
+    include:
+      - oauth
+      - real-db
+    active: real
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
   session:
     store-type: jdbc
