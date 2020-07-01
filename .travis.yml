@@ -21,3 +21,19 @@ notifications:
   email:
     recipients:
       - fortunerain@naver.com
+
+before_deploy:
+  - zip -r webservice *
+  - mkdir -p deploy
+  - mv webservice.zip deploy/webservice.zip
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: nmh-springboot2-build
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: private # zip 파일 접근을 private 으로
+    local_dir: deploy # before_deploy 에서 생성한 디렉토리
+    wait-until-deployed: true
