@@ -37,3 +37,13 @@ deploy:
     acl: private # zip 파일 접근을 private 으로
     local_dir: deploy # before_deploy 에서 생성한 디렉토리
     wait-until-deployed: true
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: nmh-springboot2-build
+    key: webservice.zip # 빌드 파일을 압축해서 전달
+    bundle_type: zip
+    application: springboot2-webservice
+    deployment_group: springboot2-webservice-group
+    region: ap-northeast-2
+    wait-until-deployed: true
