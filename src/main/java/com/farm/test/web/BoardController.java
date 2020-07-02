@@ -14,12 +14,17 @@ import javax.servlet.http.HttpSession;
 
 @RequiredArgsConstructor
 @Controller
-public class IndexController {
+public class BoardController {
   private final PostsService postsService;
   private final HttpSession httpSession;
 
   @GetMapping("/")
-  public String index(Model model, @LoginUser SessionUser user) {
+  public String home() {
+    return "home";
+  }
+
+  @GetMapping("/board")
+  public String board(Model model, @LoginUser SessionUser user) {
     model.addAttribute("posts", postsService.findAllDesc());
 
 //    SessionUser user = (SessionUser) httpSession.getAttribute("user");
@@ -28,8 +33,7 @@ public class IndexController {
       model.addAttribute("loginUserName", user.getName());
     }
 
-    return "index";
-
+    return "board";
   }
 
   @GetMapping("/posts/save")
