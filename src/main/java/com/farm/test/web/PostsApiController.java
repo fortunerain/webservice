@@ -1,5 +1,7 @@
 package com.farm.test.web;
 
+import com.farm.test.config.auth.LoginUser;
+import com.farm.test.config.auth.dto.SessionUser;
 import com.farm.test.service.posts.PostsService;
 import com.farm.test.web.dto.PostsResponseDto;
 import com.farm.test.web.dto.PostsSaveRequestDto;
@@ -14,7 +16,10 @@ public class PostsApiController {
   private final PostsService postsService;
 
   @PostMapping("/api/v1/posts")
-  public Long save(@RequestBody PostsSaveRequestDto postsSaveRequestDto) {
+  public Long save(@RequestBody PostsSaveRequestDto postsSaveRequestDto, @LoginUser SessionUser user) {
+    PostsSaveRequestDto.builder()
+            .author(user.getEmail())
+            .build();
     return postsService.save(postsSaveRequestDto);
   }
 
