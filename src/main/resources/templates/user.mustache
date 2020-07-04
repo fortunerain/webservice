@@ -1,0 +1,39 @@
+{{>layout/header}}
+<main>
+    <div class="container-fluid">
+        <h1 class="mt-4">유저</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="/board">Home</a></li>
+            <li class="breadcrumb-item active">Admin</li>
+        </ol>
+        <div class="card mb-4">
+            <div class="card-body">
+                <!-- 목록 출력 영역 -->
+                <table class="table table-horizontal table-bordered">
+                    <thead class="thead-strong">
+                    <tr>
+                        <th>번호</th>
+                        <th>이메일</th>
+                        <th>이름</th>
+                        <th>권한</th>
+                        <th>최종수정일</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tbody">
+                    {{#users}}
+                        <tr>
+                            <td>{{id}}</td>
+                            <td><a href="/user/update/{{id}}">{{email}}</a></td>
+                            <td>{{name}}</td>
+                            <td>{{role}}</td>
+                            <td>{{modifiedDate}}</td>
+                        </tr>
+                    {{/users}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+{{>layout/footer}}

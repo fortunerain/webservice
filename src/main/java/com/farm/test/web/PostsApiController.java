@@ -17,9 +17,7 @@ public class PostsApiController {
 
   @PostMapping("/api/v1/posts")
   public Long save(@RequestBody PostsSaveRequestDto postsSaveRequestDto, @LoginUser SessionUser user) {
-    PostsSaveRequestDto.builder()
-            .author(user.getEmail())
-            .build();
+    postsSaveRequestDto.setAuthor(user.getEmail());
     return postsService.save(postsSaveRequestDto);
   }
 
