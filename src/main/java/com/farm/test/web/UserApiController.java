@@ -13,8 +13,8 @@ public class UserApiController {
 
   private final UserService userService;
 
-  @PutMapping("/api/v1/users/{email}")
-  public Long update(@PathVariable String email, @RequestBody UsersUpdateRequestDto usersUpdateRequestDto) {
-    return userService.update(email, usersUpdateRequestDto.getRole());
+  @PutMapping("/api/v1/user/{id}")
+  public Long update(@PathVariable Long id, @RequestBody UsersUpdateRequestDto usersUpdateRequestDto) {
+    return userService.update(id, usersUpdateRequestDto.getRole());
   }
 }
