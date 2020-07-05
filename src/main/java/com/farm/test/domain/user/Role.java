@@ -12,6 +12,9 @@ public enum Role {
 
   private final String key;
   private final String title;
+  private String selected = "";
 
-
+  public void setSelected(boolean selected) {
+    this.selected = selected ? "selected" : "";
+  }
 }

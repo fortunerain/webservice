@@ -7,7 +7,7 @@ var main = {
     },
     update: function () {
         var data = {
-            role: $('#role').val(),
+            role: $('#role option:selected').val(),
         };
 
         var id = $('#id').val();
