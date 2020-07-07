@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 @RequiredArgsConstructor
 @Controller
-public class BoardController {
+public class PostController {
   private final PostsService postsService;
   private final HttpSession httpSession;
 
@@ -23,8 +23,8 @@ public class BoardController {
     return "home";
   }
 
-  @GetMapping("/board")
-  public String board(Model model, @LoginUser SessionUser user) {
+  @GetMapping("/post")
+  public String post(Model model, @LoginUser SessionUser user) {
     model.addAttribute("posts", postsService.findAllDesc());
 
 //    SessionUser user = (SessionUser) httpSession.getAttribute("user");
@@ -33,7 +33,7 @@ public class BoardController {
       model.addAttribute("loginUserName", user.getName());
     }
 
-    return "board";
+    return "post";
   }
 
   @GetMapping("/posts/save")
