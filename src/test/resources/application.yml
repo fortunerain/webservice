@@ -11,6 +11,10 @@ spring:
 #    include: oauth
   session:
     store-type: jdbc
+    # build시 JPA EntityManagerFactory 에러 무시
+  datasource:
+    testOnBorrow: true
+    validationQuery: SELECT 1
 
 # test oauth
   security:
