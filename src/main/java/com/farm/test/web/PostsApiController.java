@@ -17,7 +17,8 @@ public class PostsApiController {
 
   @PostMapping("/api/v1/posts")
   public Long save(@RequestBody PostsSaveRequestDto postsSaveRequestDto, @LoginUser SessionUser user) {
-    postsSaveRequestDto.setAuthor(user.getEmail());
+    // junit test 를 위해 null 일때 체크.
+    postsSaveRequestDto.setAuthor(user == null ? "Invalid User" : user.getEmail());
     return postsService.save(postsSaveRequestDto);
   }
 
