@@ -11,6 +11,8 @@
         $("#layoutSidenav_nav .sb-sidenav a.nav-link").each(function() {
             if (this.href === path) {
                 $(this).addClass("active");
+            } else {
+                $(this).removeClass("active");
             }
         });
 
