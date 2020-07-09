@@ -1,4 +1,4 @@
-package com.farm.test.web;
+package com.farm.test.web.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.env.Environment;

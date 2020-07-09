@@ -1,7 +1,5 @@
-package com.farm.test.web;
+package com.farm.test.web.controller;
 
-import com.farm.test.config.auth.LoginUser;
-import com.farm.test.config.auth.dto.SessionUser;
 import com.farm.test.service.posts.PostsService;
 import com.farm.test.web.dto.PostsResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -18,21 +16,9 @@ public class PostController {
   private final PostsService postsService;
   private final HttpSession httpSession;
 
-  @GetMapping("/")
-  public String home() {
-    return "home";
-  }
-
   @GetMapping("/post")
-  public String post(Model model, @LoginUser SessionUser user) {
+  public String post(Model model) {
     model.addAttribute("posts", postsService.findAllDesc());
-
-//    SessionUser user = (SessionUser) httpSession.getAttribute("user");
-
-    if (user != null) {
-      model.addAttribute("loginUserName", user.getName());
-    }
-
     return "post";
   }
 

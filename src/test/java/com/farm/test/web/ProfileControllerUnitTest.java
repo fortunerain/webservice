@@ -1,5 +1,6 @@
 package com.farm.test.web;
 
+import com.farm.test.web.controller.ProfileController;
 import org.junit.Test;
 import org.springframework.mock.env.MockEnvironment;
 

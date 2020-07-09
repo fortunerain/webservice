@@ -1,4 +1,4 @@
-package com.farm.test.web;
+package com.farm.test.web.controller;
 
 import com.farm.test.service.users.UserService;
 import com.farm.test.web.dto.PostsResponseDto;

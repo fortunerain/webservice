@@ -1,4 +1,4 @@
-package com.farm.test.web;
+package com.farm.test.web.controller;
 
 import com.farm.test.service.posts.PostsService;
 import lombok.RequiredArgsConstructor;

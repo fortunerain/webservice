@@ -1,4 +1,4 @@
-package com.farm.test.web;
+package com.farm.test.web.controller;
 
 import com.farm.test.config.auth.LoginUser;
 import com.farm.test.config.auth.dto.SessionUser;
@@ -21,12 +21,8 @@ public class UserController {
   private final UserService userService;
 
   @GetMapping("/user")
-  public String user(Model model, @LoginUser SessionUser user) {
+  public String user(Model model) {
     model.addAttribute("users", userService.findAllUser());
-    if (user != null) {
-      model.addAttribute("loginUserName", user.getName());
-    }
-
     return "user";
   }
 
