@@ -1,0 +1,46 @@
+{{>layout/header}}
+<main>
+    <div class="container-fluid">
+        <h1 class="mt-4">고객</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="/post">Home</a></li>
+            <li class="breadcrumb-item active">Customer</li>
+        </ol>
+        <div class="card mb-4">
+            <div class="card-body">
+                <!-- contents 영역 -->
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a href="/customer/save" role="button" class="btn btn-primary">고객 등록</a>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <!-- 목록 출력 영역 -->
+                <table class="table table-horizontal table-bordered">
+                    <thead class="thead-strong">
+                    <tr>
+                        <th>고객번호</th>
+                        <th>이름</th>
+                        <th>전화번호</th>
+                        <th>최종수정일</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tbody">
+                    {{#customers}}
+                        <tr>
+                            <td>{{id}}</td>
+                            <td><a href="/customer/update/{{id}}">{{name}}</a></td>
+                            <td>{{phone}}</td>
+                            <td>{{modifiedDate}}</td>
+                        </tr>
+                    {{/customers}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+{{>layout/footer}}

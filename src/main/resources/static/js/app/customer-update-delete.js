@@ -11,21 +11,22 @@ var main = {
     },
     update: function () {
         var data = {
-            title: $('#title').val(),
-            content: $('#content').val()
+            name: $('#name').val(),
+            phone: $('#phone').val(),
+            address: $('#address').val()
         };
 
         var id = $('#id').val();
 
         $.ajax({
             type: 'PUT',
-            url: '/api/v1/posts/' + id,
+            url: '/api/v1/customer/' + id,
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(data)
         }).done(function () {
-            alert('글이 수정 되었습니다.');
-            window.location.href = '/post';
+            alert('수정 되었습니다.');
+            window.location.href = '/customer';
         }).fail(function (error) {
             alert(JSON.stringify(error));
         })
@@ -35,12 +36,12 @@ var main = {
 
         $.ajax({
             type: 'DELETE',
-            url: '/api/v1/posts/' + id,
+            url: '/api/v1/customer/' + id,
             dataType: 'json',
             contentType: 'application/json; charset=utf-8'
         }).done(function () {
-            alert('글이 삭제 되었습니다.');
-            window.location.href = '/post';
+            alert('삭제 되었습니다.');
+            window.location.href = '/customer';
         }).fail(function (error) {
             alert(JSON.stringify(error));
         })

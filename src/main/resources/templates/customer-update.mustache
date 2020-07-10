@@ -1,0 +1,41 @@
+{{>layout/header}}
+<main>
+    <div class="container-fluid">
+        <h1 class="mt-4">고객</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="/customer">Home</a></li>
+            <li class="breadcrumb-item">Customer</li>
+            <li class="breadcrumb-item active">Update</li>
+        </ol>
+        <div class="card mb-4">
+            <div class="col-md-12">
+                <div class="col-md-4">
+                    <form>
+                        <div class="form-group">
+                            <label for="title">고객번호</label>
+                            <input type="text" class="form-control" id="id" value="{{customer.id}}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="title">이름</label>
+                            <input type="text" class="form-control" id="title" value="{{customer.name}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="author">전화번호</label>
+                            <input type="text" class="form-control" id="author" value="{{customer.phone}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="author">주소</label>
+                            <input type="text" class="form-control" id="author" value="{{customer.address}}">
+                        </div>
+                    </form>
+                    <a href="/customer" role="button" class="btn btn-secondary">취소</a>
+                    <button type="button" class="btn btn-primary" id="btn-update">수정 완료</button>
+                    <button type="button" class="btn btn-danger" id="btn-delete">삭제</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="/js/app/customer-update-delete.js" defer></script>
+{{>layout/footer}}
