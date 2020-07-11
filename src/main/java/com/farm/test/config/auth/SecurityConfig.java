@@ -12,8 +12,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
   private final CustomOAuth2UserService customOauth2UserService;
 
-  @Value("${}")
+  @Value("${spring.profiles.active}")
   private String env;
+
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     http
@@ -23,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
       .and()
       .authorizeRequests()  // url별 권한 관리를 설정하는 옵션. 이게 있어야 antMatchers 옵션 사용가능함.
       .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**", "/profile").permitAll()
-      .antMatchers("/api/v1/**").hasRole(Role.USER.name()) // todo: local 일때는 권한 필요없도록 수정해야함.
+      .antMatchers("/api/v1/**").hasRole("local".equals(env) ? Role.GUEST.name() : Role.USER.name()) // local 일때는 권한 필요없도록 수정
       .anyRequest().authenticated() // 위 설정된 url 제외한 나머지 request 들은 모두 로그인한 사용자만 허용함.
       .and()
       .logout().logoutSuccessUrl("/")
