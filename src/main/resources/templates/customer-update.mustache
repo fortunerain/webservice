@@ -7,31 +7,32 @@
             <li class="breadcrumb-item">Customer</li>
             <li class="breadcrumb-item active">Update</li>
         </ol>
-        <div class="card mb-4">
-            <div class="col-md-12">
-                <div class="col-md-4">
-                    <form>
-                        <div class="form-group">
+        <div class="card">
+            <h5 class="card-header">고객 정보 수정</h5>
+            <div class="card-body">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
                             <label for="title">고객번호</label>
                             <input type="text" class="form-control" id="id" value="{{customer.id}}" readonly>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-md-6">
                             <label for="title">이름</label>
                             <input type="text" class="form-control" id="name" value="{{customer.name}}">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-md-6">
                             <label for="author">전화번호</label>
                             <input type="text" class="form-control" id="phone" value="{{customer.phone}}">
                         </div>
-                        <div class="form-group">
-                            <label for="author">주소</label>
-                            <input type="text" class="form-control" id="address" value="{{customer.address}}">
-                        </div>
-                    </form>
-                    <a href="/customer" role="button" class="btn btn-secondary">취소</a>
-                    <button type="button" class="btn btn-primary" id="btn-update">수정 완료</button>
-                    <button type="button" class="btn btn-danger" id="btn-delete">삭제</button>
-                </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="author">주소</label>
+                        <input type="text" class="form-control" id="address" value="{{customer.address}}">
+                    </div>
+                </form>
+                <a href="/customer" role="button" class="btn btn-secondary">취소</a>
+                <button type="button" class="btn btn-primary" id="btn-update">수정 완료</button>
+                <button type="button" class="btn btn-danger" id="btn-delete">삭제</button>
             </div>
         </div>
     </div>

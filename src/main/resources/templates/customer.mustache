@@ -18,19 +18,19 @@
                 </div>
                 <br>
                 <!-- 목록 출력 영역 -->
-                <table class="table table-horizontal table-bordered">
-                    <thead class="thead-strong">
+                <table class="table table-striped">
+                    <thead class="thead-dark">
                     <tr>
-                        <th>고객번호</th>
-                        <th>이름</th>
-                        <th>전화번호</th>
-                        <th>최종수정일</th>
+                        <th scope="col">고객번호</th>
+                        <th scope="col">이름</th>
+                        <th scope="col">전화번호</th>
+                        <th scope="col">최종수정일</th>
                     </tr>
                     </thead>
                     <tbody id="tbody">
                     {{#customers}}
                         <tr>
-                            <td>{{id}}</td>
+                            <td scope="row">{{id}}</td>
                             <td><a href="/customer/update/{{id}}">{{name}}</a></td>
                             <td>{{phone}}</td>
                             <td>{{modifiedDate}}</td>
