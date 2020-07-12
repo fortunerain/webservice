@@ -2,18 +2,21 @@ package com.farm.test.config.auth;
 
 import com.farm.test.domain.user.Role;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+
+import java.util.Arrays;
 
 @RequiredArgsConstructor
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
   private final CustomOAuth2UserService customOauth2UserService;
 
-  @Value("${spring.profiles.active}")
-  private String env;
+  @Autowired
+  private Environment env;
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
@@ -24,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
       .and()
       .authorizeRequests()  // url별 권한 관리를 설정하는 옵션. 이게 있어야 antMatchers 옵션 사용가능함.
       .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**", "/profile").permitAll()
-      .antMatchers("/api/v1/**").hasRole("local".equals(env) ? Role.GUEST.name() : Role.USER.name()) // local 일때는 권한 필요없도록 수정
+      .antMatchers("/api/v1/**").hasRole(Arrays.stream(env.getActiveProfiles()).anyMatch(env -> env.contains("local")) ? Role.GUEST.name() : Role.USER.name()) // local 일때는 권한 필요없도록 수정
       .anyRequest().authenticated() // 위 설정된 url 제외한 나머지 request 들은 모두 로그인한 사용자만 허용함.
       .and()
       .logout().logoutSuccessUrl("/")
